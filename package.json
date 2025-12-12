@@ -16,5 +16,8 @@
   "dependencies": {
     "vite": "^7.2.7",
     "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
   }
 }

@@ -81,6 +81,7 @@ function handleFileUpload(event) {
       filterParticipants(); // Initial filter (ALL)
 
       controls.classList.remove('hidden');
+      uploadSection.classList.add('hidden'); // Hide upload button
       console.log(`Loaded ${allData.length} participants.`);
 
     } catch (err) {
@@ -278,6 +279,7 @@ function closeModal() {
   spinBtn.disabled = false;
   winnerDisplay.textContent = "READY";
   winnerDisplay.classList.remove('winner', 'animate');
+  document.body.classList.remove('winner-spotlight');
 }
 
 
@@ -319,6 +321,7 @@ function startSpin() {
 
   // Start Matrix Effect
   startMatrix();
+  document.body.classList.add('searching'); // Start chaotic lights
 
   // Duration: Random between 5 - 6 seconds (Requested)
   let duration = Math.floor(Math.random() * (6000 - 5000 + 1) + 5000);
@@ -352,6 +355,8 @@ function finalizeWinner() {
   // 2. Show Modal (Winner Card)
   modalWinnerName.textContent = winner;
   winnerModal.classList.remove('hidden');
+  document.body.classList.remove('searching'); // Stop chaos
+  document.body.classList.add('winner-spotlight'); // Focus lights
 
   // 3. Trigger Effects
   triggerConfetti();
