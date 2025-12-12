@@ -1,5 +1,5 @@
-@echo off
 echo ==========================================
+cd /d "%~dp0"
 echo   HOYA LOTTO - GITHUB DEPLOYMENT SCRIPT
 echo ==========================================
 
