@@ -381,12 +381,13 @@ function finalizeWinner() {
 
   if (winnerData) {
     modalEmployeeNumber.textContent = winnerData.employeeNumber;
-    modalWinnerName.textContent = winnerData.name;
+    // Typewriter effect for winner name
+    typewriterEffect(modalWinnerName, winnerData.name);
     modalFactory.textContent = winnerData.factory;
   } else {
     // Fallback if data not found
     modalEmployeeNumber.textContent = '';
-    modalWinnerName.textContent = winner;
+    typewriterEffect(modalWinnerName, winner);
     modalFactory.textContent = '';
   }
 
@@ -417,6 +418,21 @@ function finalizeWinner() {
     winnerDisplay.textContent = "ALL WINNERS PICKED";
     spinBtn.disabled = true;
   }
+}
+
+// Typewriter effect function
+function typewriterEffect(element, text, speed = 100) {
+  element.textContent = ''; // Clear existing text
+  let i = 0;
+
+  const typeInterval = setInterval(() => {
+    if (i < text.length) {
+      element.textContent += text.charAt(i);
+      i++;
+    } else {
+      clearInterval(typeInterval);
+    }
+  }, speed);
 }
 
 function triggerConfetti() {
