@@ -20,6 +20,22 @@ fileInput.addEventListener('change', handleFileUpload);
 spinBtn.addEventListener('click', startSpin);
 // factorySelect.addEventListener('change', filterParticipants); // Removed
 
+// Spacebar listener for reveal winner and continue
+document.addEventListener('keydown', (event) => {
+  if (event.code === 'Space' || event.key === ' ') {
+    event.preventDefault(); // Prevent page scroll
+
+    // If winner modal is visible, close it
+    if (!winnerModal.classList.contains('hidden')) {
+      closeModal();
+    }
+    // Otherwise, if not spinning and participants exist, start spin
+    else if (!isSpinning && participants.length > 0 && !spinBtn.disabled) {
+      startSpin();
+    }
+  }
+});
+
 function handleFileUpload(event) {
   const file = event.target.files[0];
   if (!file) return;
