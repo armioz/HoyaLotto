@@ -69,6 +69,9 @@ function handleFileUpload(event) {
 
         return {
           text: `${colA} ${colC} ${colD} ${colH}`.trim(),
+          employeeNumber: colA.toString().trim(),
+          name: `${colC} ${colD}`.trim(),
+          factory: colH,
           site: normalizedSite
         };
       }).filter(p => p !== null);
@@ -347,13 +350,30 @@ function finalizeWinner() {
   const finalIndex = Math.floor(Math.random() * participants.length);
   const winner = participants[finalIndex];
 
+  // Find the full winner data object
+  const winnerData = allData.find(d => d.text === winner);
+
   // 1. Update Display (Background)
   winnerDisplay.textContent = winner;
   winnerDisplay.classList.remove('animate');
   winnerDisplay.classList.add('winner');
 
-  // 2. Show Modal (Winner Card)
-  modalWinnerName.textContent = winner;
+  // 2. Show Modal (Winner Card) with separated info
+  const modalEmployeeNumber = document.getElementById('modalEmployeeNumber');
+  const modalWinnerName = document.getElementById('modalWinnerName');
+  const modalFactory = document.getElementById('modalFactory');
+
+  if (winnerData) {
+    modalEmployeeNumber.textContent = winnerData.employeeNumber;
+    modalWinnerName.textContent = winnerData.name;
+    modalFactory.textContent = winnerData.factory;
+  } else {
+    // Fallback if data not found
+    modalEmployeeNumber.textContent = '';
+    modalWinnerName.textContent = winner;
+    modalFactory.textContent = '';
+  }
+
   winnerModal.classList.remove('hidden');
   document.body.classList.remove('searching'); // Stop chaos
   document.body.classList.add('winner-spotlight'); // Focus lights
