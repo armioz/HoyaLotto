@@ -33,7 +33,14 @@ echo [6/7] Pushing code to GitHub...
 git push -u origin main
 
 echo [7/7] Deploying to GitHub Pages...
+call npm install gh-pages --save-dev
 call npm run deploy
+if %errorlevel% neq 0 (
+    echo [ERROR] Deployment failed!
+    echo Please check the error message above.
+    pause
+    exit /b
+)
 
 echo ==========================================
 echo   DEPLOYMENT COMPLETE!
