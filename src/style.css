@@ -343,7 +343,7 @@ input[type="file"] {
 }
 
 .winner-card {
-  background: rgba(10, 10, 10, 0.95);
+  background: rgba(10, 10, 10, 0.2);
   border: 2px solid var(--hoya-neon-green);
   padding: 4rem;
   border-radius: 20px;
@@ -737,43 +737,58 @@ body.matrix-mode .winner-display {
   /* Soft elegance */
 }
 
-/* Fun Distribution & Colors */
+/* Fun Distribution & Colors - 7 Beams Edge to Edge */
 .laser-beam:nth-child(1) {
-  left: 10%;
+  left: 0%;
+  width: 150px;
   animation-delay: 0s;
   background: linear-gradient(to bottom, white, #4C9EFF, transparent);
   animation: partySweep 4s ease-in-out infinite alternate, bouncyBeat 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite alternate, randomNeonColor1 3s linear infinite;
 }
 
 .laser-beam:nth-child(2) {
-  left: 30%;
+  left: 16.67%;
   animation-delay: -1s;
   background: linear-gradient(to bottom, white, #76C043, transparent);
   animation: partySweep 4s ease-in-out infinite alternate, bouncyBeat 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite alternate, randomNeonColor2 4s linear infinite;
 }
 
 .laser-beam:nth-child(3) {
+  left: 33.33%;
+  animation-delay: -2.5s;
+  background: linear-gradient(to bottom, white, #00E5FF, transparent);
+  animation: partySweep 4s ease-in-out infinite alternate, bouncyBeat 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite alternate, randomNeonColor4 3.5s linear infinite;
+}
+
+.laser-beam:nth-child(4) {
   left: 50%;
   animation-delay: -2s;
   width: 300px;
-  /* Increased from 180px */
   z-index: 3;
   opacity: 0.9;
   animation-name: partySweepCenter, bouncyBeat;
 }
 
-.laser-beam:nth-child(4) {
-  left: 70%;
-  animation-delay: -1.5s;
+.laser-beam:nth-child(5) {
+  left: 66.67%;
+  animation-delay: -0.5s;
   background: linear-gradient(to bottom, white, #0057B8, transparent);
   animation: partySweep 4s ease-in-out infinite alternate, bouncyBeat 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite alternate, randomNeonColor3 5s linear infinite;
 }
 
-.laser-beam:nth-child(5) {
-  left: 90%;
+.laser-beam:nth-child(6) {
+  left: 83.33%;
+  animation-delay: -1.8s;
+  background: linear-gradient(to bottom, white, #76C043, transparent);
+  animation: partySweep 4s ease-in-out infinite alternate, bouncyBeat 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite alternate, randomNeonColor2 4s linear infinite;
+}
+
+.laser-beam:nth-child(7) {
+  left: 100%;
+  width: 150px;
   animation-delay: -3s;
-  background: linear-gradient(to bottom, white, #00E5FF, transparent);
-  animation: partySweep 4s ease-in-out infinite alternate, bouncyBeat 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite alternate, randomNeonColor4 3.5s linear infinite;
+  background: linear-gradient(to bottom, white, #4C9EFF, transparent);
+  animation: partySweep 4s ease-in-out infinite alternate, bouncyBeat 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite alternate, randomNeonColor1 3s linear infinite;
 }
 
 /* Random Neon Color Animations */
@@ -1035,6 +1050,16 @@ body.searching .laser-beam:nth-child(5) {
   animation-delay: -0.3s;
 }
 
+body.searching .laser-beam:nth-child(6) {
+  animation-duration: 0.5s;
+  animation-delay: -0.4s;
+}
+
+body.searching .laser-beam:nth-child(7) {
+  animation-duration: 0.35s;
+  animation-delay: -0.6s;
+}
+
 @keyframes chaoticSearch {
   0% {
     transform: rotate(-40deg) scaleY(1);
@@ -1058,7 +1083,7 @@ body.searching .laser-beam:nth-child(5) {
 }
 
 
-/* 2. WINNER FOCUS MODE (Point to Center) */
+/* 2. WINNER FOCUS MODE (Point to Center) - 7 Beams */
 body.winner-spotlight .stage-lights-container {
   opacity: 1;
   z-index: 900;
@@ -1067,45 +1092,53 @@ body.winner-spotlight .stage-lights-container {
 /* Stop scanning and Point to Center */
 body.winner-spotlight .laser-beam {
   animation: none;
-  /* Stop sweeping */
   transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1);
-  /* Snap to target smoothly */
   filter: blur(2px);
-  /* Sharpen beams slightly */
   opacity: 0.8;
   height: 120vh;
-  /* Shorter to hit the card */
 }
 
-/* Calculate angles to point at center (approximate) */
+/* Calculate angles to point at center for all 7 beams */
 body.winner-spotlight .laser-beam:nth-child(1) {
-  transform: rotate(-35deg);
-  height: 160vh;
+  transform: rotate(-60deg);
+  height: 220vh;
   background: linear-gradient(to bottom, white, #4C9EFF, transparent);
 }
 
 body.winner-spotlight .laser-beam:nth-child(2) {
-  transform: rotate(-15deg);
-  height: 160vh;
+  transform: rotate(-45deg);
+  height: 200vh;
   background: linear-gradient(to bottom, white, #76C043, transparent);
 }
 
 body.winner-spotlight .laser-beam:nth-child(3) {
+  transform: rotate(-30deg);
+  height: 180vh;
+  background: linear-gradient(to bottom, white, #00E5FF, transparent);
+}
+
+body.winner-spotlight .laser-beam:nth-child(4) {
   transform: rotate(0deg) scale(1.5);
   height: 160vh;
   opacity: 1;
   mix-blend-mode: screen;
 }
 
-body.winner-spotlight .laser-beam:nth-child(4) {
-  transform: rotate(15deg);
-  height: 160vh;
+body.winner-spotlight .laser-beam:nth-child(5) {
+  transform: rotate(30deg);
+  height: 180vh;
+  background: linear-gradient(to bottom, white, #0057B8, transparent);
+}
+
+body.winner-spotlight .laser-beam:nth-child(6) {
+  transform: rotate(45deg);
+  height: 200vh;
   background: linear-gradient(to bottom, white, #76C043, transparent);
 }
 
-body.winner-spotlight .laser-beam:nth-child(5) {
-  transform: rotate(35deg);
-  height: 160vh;
+body.winner-spotlight .laser-beam:nth-child(7) {
+  transform: rotate(60deg);
+  height: 220vh;
   background: linear-gradient(to bottom, white, #4C9EFF, transparent);
 }
 
