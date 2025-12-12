@@ -1,0 +1,611 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Russo+One&family=Chakra+Petch:wght@600;700&display=swap');
+
+:root {
+  --hoya-blue: #0057B8;
+  --hoya-light-blue: #549CCE;
+  --hoya-green: #76C043;
+  /* Kept for minor accents if needed */
+
+  /* NEON BLUE THEME */
+  --hoya-neon-green: #4C9EFF;
+  /* Hoya Neon Blue */
+
+  --black: #050505;
+  --dark-panel: #111111;
+  --text-main: #FFFFFF;
+  --bg-glow: radial-gradient(circle at 50% 50%, rgba(76, 158, 255, 0.15) 0%, rgba(0, 87, 184, 0.1) 100%);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--black);
+  /* Horizon Line Glow mimicking the image */
+  background-image:
+    linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 87, 184, 0.2) 45%, rgba(0, 229, 255, 0.4) 50%, rgba(0, 87, 184, 0.2) 55%, rgba(0, 0, 0, 1) 100%),
+    radial-gradient(circle at 50% 50%, rgba(0, 87, 184, 0.2) 0%, transparent 70%);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  perspective: 1000px;
+  /* Enable 3D perspective */
+}
+
+#app {
+  text-align: center;
+  width: 100%;
+  max-width: 900px;
+  padding: 3rem;
+  background: rgba(17, 17, 17, 0.8);
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(118, 192, 67, 0.2);
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 10;
+}
+
+header {
+  margin-bottom: 3rem;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2rem;
+  background-image: linear-gradient(to right, var(--hoya-blue), var(--hoya-green));
+  background-size: 100% 2px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+
+.hoya-logo {
+  max-width: 300px;
+  height: auto;
+  margin-bottom: 1.5rem;
+  /* Neon Blue Drop Shadow */
+  filter: drop-shadow(0 0 10px rgba(0, 229, 255, 0.6)) drop-shadow(0 0 20px rgba(0, 87, 184, 0.4));
+  transition: all 0.3s ease;
+}
+
+.hoya-logo:hover {
+  filter: drop-shadow(0 0 15px rgba(0, 229, 255, 0.8)) drop-shadow(0 0 30px rgba(0, 87, 184, 0.6));
+  transform: scale(1.05);
+}
+
+h1 {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+  color: #FFFFFF;
+  /* Default White */
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.text-highlight {
+  color: var(--hoya-neon-green);
+  /* This is now Neon Blue #00E5FF */
+  text-shadow: 0 0 15px rgba(0, 229, 255, 0.6);
+}
+
+header p {
+  color: #8899A6;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Upload Section */
+.upload-section {
+  margin-bottom: 2rem;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--hoya-green);
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--hoya-neon-green);
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(118, 192, 67, 0.1);
+}
+
+.custom-file-upload:hover {
+  background: var(--hoya-green);
+  color: var(--black);
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(118, 192, 67, 0.4);
+}
+
+
+
+/* Control Section */
+.control-section {
+  margin-bottom: 3rem;
+}
+
+.hidden {
+  display: none;
+  opacity: 0;
+}
+
+/* Cyber Select Dropdown */
+.cyber-select {
+  background: rgba(0, 0, 0, 0.8);
+  color: var(--hoya-neon-green);
+  border: 2px solid var(--hoya-neon-green);
+  padding: 1rem 2rem;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  /* Boxy cyber look */
+  margin-right: 1rem;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0 0 10px rgba(118, 192, 67, 0.2);
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.cyber-select:hover,
+.cyber-select:focus {
+  /* Updated to Neon Hoya Blue shadow */
+  box-shadow: 0 0 20px rgba(76, 158, 255, 0.5);
+  background: rgba(10, 20, 10, 0.9);
+}
+
+
+
+.spin-btn {
+  background: linear-gradient(90deg, var(--hoya-blue) 0%, var(--hoya-green) 100%);
+  border: none;
+  padding: 1.5rem 4rem;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  border-radius: 50px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(0, 87, 184, 0.4);
+}
+
+.spin-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 0 40px rgba(118, 192, 67, 0.5);
+}
+
+.spin-btn:active {
+  transform: scale(0.98);
+}
+
+.spin-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: grayscale(0.8);
+}
+
+/* Display Section */
+.display-section {
+  height: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(118, 192, 67, 0.2);
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.display-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, rgba(118, 192, 67, 0.1), transparent 70%);
+  z-index: 0;
+}
+
+.winner-display {
+  font-family: 'Outfit', sans-serif;
+  font-size: 3rem;
+  color: var(--hoya-light-blue);
+  min-height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  z-index: 1;
+}
+
+.winner-display.animate {
+  animation: roll 0.1s infinite;
+  color: var(--hoya-neon-green);
+  text-shadow: 0 0 10px var(--hoya-green);
+}
+
+.winner-display.winner {
+  font-family: 'Chakra Petch', sans-serif;
+  /* Tech/Futuristic Font */
+  font-weight: 700;
+  font-size: 3.5rem;
+  /* Reduced from 5rem to fit long names */
+  line-height: 1.2;
+  word-break: break-word;
+  /* Ensure long single words wrap */
+  max-width: 100%;
+
+  /* Neon Hoya Blue Text */
+  color: #4C9EFF;
+  background: none;
+  /* Remove gradient for pure digital look */
+  -webkit-text-fill-color: initial;
+
+  /* Glitch Shadows: Red vs Deep Blue */
+  text-shadow:
+    3px 0px 0px #FF0000,
+    -3px 0px 0px #0057B8,
+    0 0 20px rgba(76, 158, 255, 0.5);
+
+  animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.placeholder {
+  font-size: 5rem;
+  color: rgba(255, 255, 255, 0.05);
+}
+
+@keyframes roll {
+  0% {
+    transform: translateY(-3px);
+    opacity: 0.8;
+  }
+
+  50% {
+    transform: translateY(3px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-3px);
+    opacity: 0.8;
+  }
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Confetti */
+#confetti-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 2000;
+  /* Highest z-index */
+}
+
+/* Winner Modal */
+.winner-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  /* Dark backdrop */
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.winner-modal.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.winner-card {
+  background: rgba(10, 10, 10, 0.95);
+  border: 2px solid var(--hoya-neon-green);
+  padding: 4rem;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 0 50px rgba(76, 158, 255, 0.4), inset 0 0 20px rgba(0, 0, 0, 0.8);
+  max-width: 90%;
+  width: 800px;
+  transform: scale(1);
+  animation: cardPopIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes cardPopIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.winner-title {
+  color: #FFFFFF;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 4px;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.winner-name {
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 4rem;
+  /* Big impact */
+  font-weight: 700;
+  color: var(--hoya-neon-green);
+  text-shadow:
+    3px 3px 0px #0057B8,
+    -1px -1px 0px #FFFFFF,
+    0 0 30px rgba(76, 158, 255, 0.6);
+  line-height: 1.2;
+  margin-bottom: 3rem;
+  text-transform: uppercase;
+}
+
+.close-btn {
+  background: transparent;
+  border: 1px solid var(--hoya-light-blue);
+  color: var(--hoya-light-blue);
+  padding: 1rem 3rem;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+}
+
+.close-btn:hover {
+  background: var(--hoya-blue);
+  color: white;
+  box-shadow: 0 0 15px var(--hoya-blue);
+}
+
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: var(--hoya-neon-green);
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh) rotate(720deg);
+  }
+}
+
+
+
+/* Matrix Mode */
+body.matrix-mode {
+  background: var(--black);
+  /* Very dark blue */
+  color: var(--hoya-neon-green);
+  font-family: 'Share Tech Mono', monospace;
+}
+
+body.matrix-mode #app {
+  background: transparent;
+  box-shadow: none;
+  border: 2px solid var(--hoya-neon-green);
+  backdrop-filter: none;
+}
+
+body.matrix-mode h1,
+body.matrix-mode .spin-btn,
+body.matrix-mode .custom-file-upload {
+  color: var(--hoya-neon-green);
+  border-color: var(--hoya-neon-green);
+  box-shadow: 0 0 20px rgba(118, 192, 67, 0.4);
+  background: transparent;
+  -webkit-text-fill-color: initial;
+  /* Reset gradient text */
+  text-shadow: 0 0 10px var(--hoya-green);
+}
+
+body.matrix-mode header {
+  background: transparent;
+  border-bottom-color: var(--hoya-neon-green);
+}
+
+body.matrix-mode .winner-display {
+  font-family: 'Share Tech Mono', monospace;
+  color: var(--hoya-neon-green);
+  text-shadow: 0 0 15px var(--hoya-green);
+}
+
+body.matrix-mode .display-section {
+  background: rgba(0, 20, 0, 0.2);
+  border-color: var(--hoya-neon-green);
+}
+
+#matrix-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.5s ease;
+}
+
+body.matrix-mode #matrix-canvas {
+  opacity: 1;
+}
+
+/* Cyber Glitch Overlay */
+body.cyber-glitch::after {
+  content: " ";
+  display: block;
+  position: fixed;
+  /* Fixed to cover full screen */
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(18, 16, 16, 0.1);
+  opacity: 0;
+  z-index: 100;
+  pointer-events: none;
+  animation: flicker 0.15s infinite;
+}
+
+body.cyber-glitch::before {
+  content: " ";
+  display: block;
+  position: fixed;
+  /* Fixed to cover full screen */
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  z-index: 101;
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}
+
+/* Horizontal Glitch Animation for App Container */
+body.cyber-glitch #app {
+  animation: glitch-skew 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+  border: 1px solid rgba(0, 255, 255, 0.5);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 0.1;
+  }
+
+  5% {
+    opacity: 0.2;
+  }
+
+  10% {
+    opacity: 0.1;
+  }
+
+  100% {
+    opacity: 0.1;
+  }
+}
+
+@keyframes glitch-skew {
+  0% {
+    transform: translate(0)
+  }
+
+  20% {
+    transform: translate(-2px, 2px)
+  }
+
+  40% {
+    transform: translate(-2px, -2px)
+  }
+
+  60% {
+    transform: translate(2px, 2px)
+  }
+
+  80% {
+    transform: translate(2px, -2px)
+  }
+
+  100% {
+    transform: translate(0)
+  }
+}
+
+/* Update text style for cyber mode */
+body.matrix-mode .winner-display {
+  font-family: 'Share Tech Mono', monospace;
+  color: #4C9EFF;
+  /* Neon Hoya Blue */
+  text-shadow: 2px 0px #FF0055, -2px 0px #0057B8;
+  /* Chromatic aberration */
+}
+
+/* Congrats Message */
+.congrats-message {
+  position: absolute;
+  top: -4rem;
+  /* Position above the winner text */
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 900;
+  font-size: 3rem;
+  color: var(--hoya-neon-green);
+  text-shadow: 0 0 20px var(--hoya-green);
+  width: 100%;
+  text-align: center;
+  z-index: 2;
+  animation: zoomIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes zoomIn {
+  0% {
+    transform: translateX(-50%) scale(0);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Matrix Mode - Ensure congrats matches */
+body.matrix-mode .congrats-message {
+  font-family: 'Share Tech Mono', monospace;
+  color: var(--hoya-neon-green);
+  text-shadow: 0 0 10px var(--hoya-neon-green);
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grand Prize Picker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&family=Playfair+Display:wght@700&display=swap"
+    rel="stylesheet">
+  <script type="module" crossorigin src="/assets/index-D9Xjjzxw.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-DH1tHQiZ.css">
+</head>
+
+<body>
+  <div id="app">
+    <header>
+      <img src="/hoya-logo.png" alt="Hoya Surgical Optics" class="hoya-logo">
+      <h1>THE 1st HOYA<br>CARBON NEUTRAL <span class="text-highlight">EVENT 2025</span></h1>
+      <p>Grand Prize</p>
+    </header>
+
+    <main>
+      <div class="upload-section" id="uploadSection">
+        <label for="fileInput" class="custom-file-upload">
+          <span class="icon">📂</span> Upload Excel File
+        </label>
+        <input type="file" id="fileInput" accept=".xlsx, .xls" />
+
+      </div>
+
+      <div class="control-section hidden" id="controls">
+        <button id="spinBtn" class="spin-btn">REVEAL WINNER</button>
+      </div>
+
+      <div class="display-section">
+        <div id="congratsMessage" class="congrats-message hidden">CONGRATULATIONS!</div>
+        <div id="winnerDisplay" class="winner-display">
+          <div class="placeholder">?</div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Winner Modal Overlay -->
+    <div id="winnerModal" class="winner-modal hidden">
+      <div class="winner-card">
+        <h2 class="winner-title">GRAND PRIZE WINNER</h2>
+        <div id="modalWinnerName" class="winner-name">WINNER NAME</div>
+        <button id="closeModalBtn" class="close-btn">CONTINUE</button>
+      </div>
+    </div>
+
+    <div id="confetti-container"></div>
+  </div>
+</body>
+
+</html>
